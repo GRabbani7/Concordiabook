@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textbooks for {{ course_code }}</title>
+</head>
+<body>
+    <h1>Textbooks for {{ course_code }}</h1>
+
+    {% if no_results %}
+        <p>No textbooks are currently available for this course.</p>
+    {% else %}
+        <ul>
+            {% for textbook in textbooks %}
+                <li>
+                    <strong>{{ textbook.title }}</strong> by {{ textbook.author }}
+                    {% if textbook.edition %} (Edition: {{ textbook.edition }}){% endif %}
+                    <br>Condition: {{ textbook.condition }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
